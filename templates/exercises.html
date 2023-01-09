@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %} Exercises {% endblock %}
+
+{% block body %}
+  <h1>Here are some exercises</h1>
+  {% for ex in exercises %}
+  <p>{{ex["name"]}}</p>
+  <p>{{ex["type"]}}</p>
+  <p>{{ex["muscle"]}}</p>
+  <p>{{ex["equipment"]}}</p>
+  <p>{{ex["difficulty"]}}</p>
+  <p>{{ex["instructions"]}}</p>
+  {% endfor %}
+{% endblock %}
