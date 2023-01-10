@@ -4,10 +4,50 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{% endblock %}</title>
+  <link rel="icon" href="/static/dumbbell.png">
+  <title>Workout Planner:{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  {% block body %}{% endblock %}
+  <nav class="navigation">
+    {% if session["user_id"] %}
+      <ul class="navbar">
+        <li class="logo"><a href="/" class="nav-logo"><i class="fa-sharp fa-solid fa-dumbbell"></i></a></li>
+        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="/info" class="nav-link">Why You Should Workout?</a></li>
+        <li class="nav-item"><a href="/exercises" class="nav-link">Exercises</a></li>
+      </ul>
+      <ul class="navbar">
+        <li class="nav-item"><a href="/workout" class="nav-link">My Workout</a></li>
+        <li class="nav-item"><a href="/signout" class="nav-link btn">Sign Out</a></li>
+      </ul>
+    {% else %}
+    <ul class="navbar">
+      <li class="logo"><a href="/" class="nav-logo"><i class="fa-sharp fa-solid fa-dumbbell"></i></a></li>
+    </ul>
+      <ul class="navbar">
+        <li class="nav-item"><a href="/register" class="nav-link btn">Register</a></li>
+        <li class="nav-item"><a href="/login" class="nav-link">Log In</a></li>
+      </ul>
+    {% endif %}
+  </nav>
+  
+  <div class="main">
+    {% block body %}{% endblock %}
+  </div>
+
+  <script>
+    nav = document.querySelector('.navigation')
+    window.onscroll = function() {opacity()}
+
+    function opacity() {
+      if (document.documentElement.scrollTop > 50) {
+        nav.classList.add('opacity')
+      } else {
+        nav.classList.remove('opacity')
+      }
+    }
+  </script>
 </body>
 </html>

@@ -17,8 +17,15 @@ db = SQL("sqlite:///users.db")
 
 
 @app.route("/")
+@login_required
 def index():
   return render_template("index.html")
+
+
+@app.route("/ïnfo")
+@login_required
+def info():
+  return render_template("info.html")
 
 
 @app.route("/exercises")
@@ -42,6 +49,16 @@ def login():
     elif not password:
       error = 'Enter Password!'
       return render_template("login.html", error2=error)
+
+    rows = db.execute("SELECT * FROM users WHERE username = ?", username)
+
+    if len(rows) != 1 or not check_password_hash(rows[0]["hash"], password):
+      error = "Invalid Username And/Or Password"
+      return render_template("login.html", error1 = error)
+
+    session["user_id"] = rows[0]["id"]
+
+    return redirect("/")
 
   else:
     return render_template("login.html")
@@ -70,10 +87,31 @@ def register():
 
     hash = generate_password_hash(password, 'pbkdf2:sha256', 2)
 
-    new_user = db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", username, hash)
+    usernames = db.execute("SELECT username FROM users")
+
+    for i in range(len(usernames)): 
+      if username == usernames[i]:
+        error = 'Username Already Exists!'
+        return render_template("register.html", error=error)
+
+    new_user = db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", username, hash) 
 
     session["user_id"] = new_user
 
     return redirect("/")
   else:
     return render_template("register.html")
+
+
+@app.route("/signout")
+@login_required
+def signout():
+  session.clear()
+
+  return redirect("/login")
+
+
+@app.route("/workout")
+@login_required
+def workout():
+  return render_template("workout.html")

@@ -3,6 +3,19 @@
 {% block title %} Welcome {% endblock %}
 
 {% block body %}
-  <a href="/register">Register</a>
-  <a href="/login">Log In</a>
+  <div class="container">
+    <h1>Welcome to your Workout Planner</h1>
+    <div class="card">
+      <img src="{{ url_for('static', filename='1.jpg') }}" alt="Man lifting a barbell">
+      <div class="card-container">
+        <h2>This is you workout planner!</h2>
+        <p>First you can go to <a href="/workout">Why Should You Workout?</a> page to read a article on why it's good to exercise.</p>
+        <p>After we convince you to workout you can go to <a href="/exercises">Exercises</a> page and select the group of muslce you want to train.
+           After you select the muscle, there will be 10 exercises for that muscle with instructions and the difficulty of the exercise. 
+           Select the exercises based on your experience(if you are new select the beginner, if you have some experience select intermediate, etc.)</p>
+        <p>After you select exercises you can go to <a href="/workout">My Workout</a> page where you will see all the exercises you selected.</p>
+        <h2>You are ready to go. <span class="orange">Success!</span></h2>
+      </div>
+    </div>
+  </div>
 {% endblock %}
