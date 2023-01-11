@@ -1,9 +1,19 @@
 {% extends "layout.html" %}
 
-{% block title %} Why You Should Workout {% endblock %}
+{% block title %} Why You Should Workout? {% endblock %}
 
 {% block body %}
-  <div class="container">
-    <h1>Welcome to the workout planner</h1>
+  <div class="container-big">
+    <h1>Why You Should Work Out?</h1>
+    <div class="card-big">
+      <div class="card-big-container">
+        <img src="{{ url_for('static', filename='1.jpg') }}" alt="Man lifting a barbell">
+        <div class="card-container">
+          <h2>Exercise controls weight</h2>
+          <p>Exercise can help prevent excess weight gain or help maintain weight loss. When you engage in physical activity, you burn calories. The more intense the activity, the more calories you burn.</p>
+          <p>Regular trips to the gym are great, but don't worry if you can't find a large chunk of time to exercise every day. Any amount of activity is better than none at all. To reap the benefits of exercise, just get more active throughout your day — take the stairs instead of the elevator or rev up your household chores. Consistency is key.</p>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock %}

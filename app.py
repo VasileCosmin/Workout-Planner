@@ -22,7 +22,7 @@ def index():
   return render_template("index.html")
 
 
-@app.route("/ïnfo")
+@app.route("/info")
 @login_required
 def info():
   return render_template("info.html")
