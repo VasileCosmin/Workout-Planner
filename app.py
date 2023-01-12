@@ -28,11 +28,17 @@ def info():
   return render_template("info.html")
 
 
-@app.route("/exercises")
+@app.route("/exercises", methods=['GET', 'POST'])
 @login_required
 def exercises():
-  exercises = get_exercises()
-  return render_template("exercises.html", exercises=exercises)
+  if request.method == 'POST':
+    user_id = session["user_id"]
+    muscle = request.form.get("muscles")
+    exercises = get_exercises(muscle)
+
+    return render_template("exercises.html", exercises=exercises)
+  else:
+    return render_template("exercises.html")
 
 
 @app.route("/login", methods=['POST', 'GET'])

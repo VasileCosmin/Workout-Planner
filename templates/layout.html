@@ -33,9 +33,11 @@
     {% endif %}
   </nav>
   
-  <div class="main">
-    {% block body %}{% endblock %}
-  </div>
+  {% block body %}{% endblock %}
+
+  <footer class="footer">
+    <p>2023 Workout Planner &#169;</p>
+  </footer>
 
   <script>
     nav = document.querySelector('.navigation')

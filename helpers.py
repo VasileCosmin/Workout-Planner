@@ -19,10 +19,10 @@ def login_required(f):
 
 
 
-def get_exercises():
+def get_exercises(muscle):
   url = "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises"
 
-  querystring = {"muscle": "middle_back"}
+  querystring = {"muscle": muscle}
 
   headers = {
     "X-RapidAPI-Key": "5e49e6c529msh539b9a5b3af5adfp15b833jsn725a79513fa1",
@@ -30,5 +30,5 @@ def get_exercises():
   }
 
   response = json.loads(requests.request("GET", url, headers=headers, params=querystring).text)
-  print(response)
+  
   return response

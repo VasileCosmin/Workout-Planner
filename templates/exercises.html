@@ -3,13 +3,63 @@
 {% block title %} Exercises {% endblock %}
 
 {% block body %}
-  <h1>Here are some exercises</h1>
-  {% for ex in exercises %}
-  <p>{{ex["name"]}}</p>
-  <p>{{ex["type"]}}</p>
-  <p>{{ex["muscle"]}}</p>
-  <p>{{ex["equipment"]}}</p>
-  <p>{{ex["difficulty"]}}</p>
-  <p>{{ex["instructions"]}}</p>
-  {% endfor %}
+  <div class="container-big">
+    <h1>Here are some exercises</h1>
+    <div class="card-big">
+      <form action="/exercises" id="exercises" method="post">
+        <select name="muscles" id="muscles">
+          <option selected disabled>Select Muscle</option>
+          <option value="abdominals">abdominals</option>
+          <option value="abductors">abductors</option>
+          <option value="adductors">adductors</option>
+          <option value="biceps">biceps</option>
+          <option value="calves">calves</option>
+          <option value="chest">chest</option>
+          <option value="forearms">forearms</option>
+          <option value="glutes">glutes</option>
+          <option value="hamstrings">hamstrings</option>
+          <option value="lats">lats</option>
+          <option value="lower_back">lower_back</option>
+          <option value="middle_back">middle_back</option>
+          <option value="neck">neck</option>
+          <option value="quadriceps">quadriceps</option>
+          <option value="traps">traps</option>
+          <option value="triceps">triceps</option>
+        </select>
+        <button type="submit" class="btn" id="select" name="select">Select</button>
+      </form>
+      <h2>Here are some exercises</h2>
+      <div class="card-ex-container">
+      {% for ex in exercises %}
+        <div class="ex-container">
+          <div class="ex">
+            <p id="name">Name: {{ ex["name"] }}</p>
+            <p id="type">Type: {{ ex["type"] }}</p>
+          </div>
+          <div class="ex">
+            <p id="equipment">Equipment: {{ ex["equipment"] }}</p>
+            <p id="difficulty">Difficulty: {{ ex["difficulty"] }}</p>
+          </div>
+          <div>
+            <p class="instructions">{{ ex["instructions"] }}</p>
+            <button class="btn readmore" onclick="readMore(this)">Read More</button>
+            <button class="btn readmore" name="add" value="add">Add exercise</button>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function readMore(btn) {
+      let text = btn.parentElement;
+      text.querySelector('.instructions').classList.toggle('show');
+      if (btn.innerText = 'Read More') {
+        btn.innerText = 'Read Less';
+      } else {
+        btn.innerText = 'Read More';
+      }
+    }
+  </script>
 {% endblock %}
