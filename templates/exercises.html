@@ -4,7 +4,7 @@
 
 {% block body %}
   <div class="container-big">
-    <h1>Here are some exercises</h1>
+    <h1>Select The Muscle You Want To Work</h1>
     <div class="card-big">
       <form action="/exercises" id="exercises" method="post">
         <select name="muscles" id="muscles">
@@ -23,6 +23,7 @@
           <option value="middle_back">middle_back</option>
           <option value="neck">neck</option>
           <option value="quadriceps">quadriceps</option>
+          <option value="shoulders">shoulders</option>
           <option value="traps">traps</option>
           <option value="triceps">triceps</option>
         </select>
@@ -43,7 +44,12 @@
           <div>
             <p class="instructions">{{ ex["instructions"] }}</p>
             <button class="btn readmore" onclick="readMore(this)">Read More</button>
-            <button class="btn readmore" name="add" value="add">Add exercise</button>
+            <form action="/add" method="post" style="display: inline;">
+              <input type="text" name="name" value="{{ ex['name'] }}" hidden>
+              <input type="text" name="equipment" value="{{ ex['equipment'] }}" hidden>
+              <input type="text" name="instructions" value="{{ ex['instructions'] }}" hidden>
+              <button class="btn readmore" name="add" value="add" type="submit">Add exercise</button>
+            </form>
           </div>
         </div>
       {% endfor %}

@@ -5,5 +5,19 @@
 {% block body %}
   <div class="container">
     <h1>Your Workout</h1>
+    <div class="card-big">
+      <div class="exercises-container">
+        {% for row in exercises %}
+          <div class="exercise-container">
+            <h2>{{ row.exercise }}</h2>
+            <h3>{{ row.equipment }}</h3>
+            <form action="/delete" method="post" id="delete">
+              <input type="text" name="exercise" value="{{ row.exercise }}" id="exercise" hidden>
+              <button class="btn remove">Remove Exercise</button>
+            </form>
+          </div>
+        {% endfor %}
+      </div>
+    </div>  
   </div>
 {% endblock %}

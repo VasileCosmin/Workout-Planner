@@ -16,6 +16,40 @@ Session(app)
 db = SQL("sqlite:///users.db")
 
 
+@app.route("/add", methods=["POST"])
+@login_required
+def add():
+  if request.method == 'POST':
+    user_id = session["user_id"]
+    name = request.form.get("name")
+    equipment = request.form.get("equipment")
+    instructions = request.form.get("instructions")
+
+    db.execute("INSERT INTO exercises (user_id, exercise, equipment, instructions) VALUES (?, ?, ?, ?)", user_id, name, equipment, instructions)
+
+    return redirect("/workout")
+
+
+@app.route("/delete", methods=["POST"])
+@login_required
+def delete():
+  user_id = session["user_id"]
+  exercise = request.form.get("exercise")
+  if id:
+    db.execute("DELETE FROM exercises WHERE exercise = ? AND user_id = ?", exercise, user_id)
+  
+  return redirect("/workout")
+
+
+@app.route("/workout")
+@login_required
+def workout():
+  user_id = session["user_id"]
+  exercises = db.execute("SELECT * FROM exercises WHERE user_id = ?", user_id)
+  
+  return render_template("workout.html", exercises=exercises)
+
+
 @app.route("/")
 @login_required
 def index():
@@ -32,9 +66,9 @@ def info():
 @login_required
 def exercises():
   if request.method == 'POST':
-    user_id = session["user_id"]
     muscle = request.form.get("muscles")
     exercises = get_exercises(muscle)
+
 
     return render_template("exercises.html", exercises=exercises)
   else:
@@ -115,9 +149,3 @@ def signout():
   session.clear()
 
   return redirect("/login")
-
-
-@app.route("/workout")
-@login_required
-def workout():
-  return render_template("workout.html")
