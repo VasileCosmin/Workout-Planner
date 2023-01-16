@@ -22,13 +22,27 @@
         <li class="nav-item"><a href="/workout" class="nav-link">My Workout</a></li>
         <li class="nav-item"><a href="/signout" class="nav-link btn">Sign Out</a></li>
       </ul>
+
+      <button id="mobile-menu-open">
+        <div class="top-line"></div>
+        <div class="mid-line"></div>
+        <div class="bot-line"></div>
+      </button>
+
+      <ul class="mobile-menu hide">
+        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="/info" class="nav-link">Why You Should Workout?</a></li>
+        <li class="nav-item"><a href="/exercises" class="nav-link">Exercises</a></li>
+        <li class="nav-item"><a href="/workout" class="nav-link">My Workout</a></li>
+        <li class="nav-item"><a href="/signout" class="nav-link btn">Sign Out</a></li>
+      </ul>
     {% else %}
     <ul class="navbar">
       <li class="logo"><a href="/" class="nav-logo"><i class="fa-sharp fa-solid fa-dumbbell"></i></a></li>
     </ul>
       <ul class="navbar">
-        <li class="nav-item"><a href="/register" class="nav-link btn">Register</a></li>
-        <li class="nav-item"><a href="/login" class="nav-link">Log In</a></li>
+        <li class="nav-item-log"><a href="/register" class="nav-link btn">Register</a></li>
+        <li class="nav-item-log"><a href="/login" class="nav-link">Log In</a></li>
       </ul>
     {% endif %}
   </nav>
@@ -50,6 +64,18 @@
         nav.classList.remove('opacity')
       }
     }
+
+    const menuBtn = document.querySelector('#mobile-menu-open')
+    const mobileMenu = document.querySelector('.mobile-menu')
+    menuBtn.addEventListener('click', () => {
+      menuBtn.children[0].classList.toggle('change')
+      menuBtn.children[1].classList.toggle('change')
+      menuBtn.children[2].classList.toggle('change')
+
+      mobileMenu.classList.toggle('hide')
+
+      document.body.classList.toggle('disable-scroll')
+    })
   </script>
 </body>
 </html>

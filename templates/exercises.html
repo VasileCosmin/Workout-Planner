@@ -33,13 +33,11 @@
       <div class="card-ex-container">
       {% for ex in exercises %}
         <div class="ex-container">
+          <h3 id="name">{{ ex["name"] }}</h3>
           <div class="ex">
-            <p id="name">Name: {{ ex["name"] }}</p>
-            <p id="type">Type: {{ ex["type"] }}</p>
-          </div>
-          <div class="ex">
-            <p id="equipment">Equipment: {{ ex["equipment"] }}</p>
-            <p id="difficulty">Difficulty: {{ ex["difficulty"] }}</p>
+            <p id="type">{{ ex["type"] }}</p>
+            <p id="equipment">{{ ex["equipment"] }}</p>
+            <p id="difficulty">{{ ex["difficulty"] }}</p>
           </div>
           <div>
             <p class="instructions">{{ ex["instructions"] }}</p>
