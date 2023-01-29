@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,46 +8,55 @@
   <link rel="icon" href="/static/dumbbell.png">
   <title>Workout Planner:{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="/static/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
   <nav class="navigation">
     {% if session["user_id"] %}
-      <ul class="navbar">
-        <li class="logo"><a href="/" class="nav-logo"><i class="fa-sharp fa-solid fa-dumbbell"></i></a></li>
-        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="/info" class="nav-link">Why You Should Workout?</a></li>
-        <li class="nav-item"><a href="/exercises" class="nav-link">Exercises</a></li>
-      </ul>
-      <ul class="navbar">
-        <li class="nav-item"><a href="/workout" class="nav-link">My Workout</a></li>
-        <li class="nav-item"><a href="/signout" class="nav-link btn">Sign Out</a></li>
-      </ul>
+    <ul class="navbar">
+      <li class="logo"><a href="/" class="nav-logo"><i class="fa-sharp fa-solid fa-dumbbell"></i></a></li>
+      <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="/info" class="nav-link">Why You Should Workout?</a></li>
+      <li class="nav-item"><a href="/exercises" class="nav-link">Exercises</a></li>
+    </ul>
+    <ul class="navbar">
+      <li class="nav-item"><a href="/workout" class="nav-link">My Workout</a></li>
+      <li class="nav-item"><a href="/signout" class="nav-link btn">Sign Out</a></li>
+    </ul>
 
-      <button id="mobile-menu-open">
-        <div class="top-line"></div>
-        <div class="mid-line"></div>
-        <div class="bot-line"></div>
-      </button>
+    <button id="mobile-menu-open">
+      <div class="top-line"></div>
+      <div class="mid-line"></div>
+      <div class="bot-line"></div>
+    </button>
 
-      <ul class="mobile-menu hide">
-        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="/info" class="nav-link">Why You Should Workout?</a></li>
-        <li class="nav-item"><a href="/exercises" class="nav-link">Exercises</a></li>
-        <li class="nav-item"><a href="/workout" class="nav-link">My Workout</a></li>
-        <li class="nav-item"><a href="/signout" class="nav-link btn">Sign Out</a></li>
-      </ul>
+    <ul class="mobile-menu hide">
+      <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="/info" class="nav-link">Why You Should Workout?</a></li>
+      <li class="nav-item"><a href="/exercises" class="nav-link">Exercises</a></li>
+      <li class="nav-item"><a href="/workout" class="nav-link">My Workout</a></li>
+      <li class="nav-item"><a href="/signout" class="nav-link btn">Sign Out</a></li>
+    </ul>
     {% else %}
     <ul class="navbar">
       <li class="logo"><a href="/" class="nav-logo"><i class="fa-sharp fa-solid fa-dumbbell"></i></a></li>
     </ul>
-      <ul class="navbar">
-        <li class="nav-item-log"><a href="/register" class="nav-link btn">Register</a></li>
-        <li class="nav-item-log"><a href="/login" class="nav-link">Log In</a></li>
-      </ul>
+    <ul class="navbar">
+      <li class="nav-item-log"><a href="/register" class="nav-link btn">Register</a></li>
+      <li class="nav-item-log"><a href="/login" class="nav-link">Log In</a></li>
+    </ul>
     {% endif %}
   </nav>
-  
+
+  {% if get_flashed_messages() %}
+  <div class="message">
+    {{ get_flashed_messages() | join(" ") }}
+  </div>
+  {% endif %}
+
   {% block body %}{% endblock %}
 
   <footer class="footer">
@@ -55,7 +65,7 @@
 
   <script>
     nav = document.querySelector('.navigation')
-    window.onscroll = function() {opacity()}
+    window.onscroll = function () { opacity() }
 
     function opacity() {
       if (document.documentElement.scrollTop > 50) {
@@ -78,4 +88,5 @@
     })
   </script>
 </body>
+
 </html>

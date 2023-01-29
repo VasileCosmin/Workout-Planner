@@ -3,20 +3,20 @@
 {% block title %} Log In {% endblock %}
 
 {% block body %}
-  <div class="container">
-    <h1>Welcome to the workout planner</h1>
-  
-    <div class="card">
-      <img src="{{ url_for('static', filename='1.jpg') }}" alt="Man lifting a barbell">
-      <form action="/login" method="post" class="card-container">
-        <h2>Greetings, log in if you have an account</h2>
-        <h4 class="error">{{ error1 }}</h4>
-        <input type="text" name="username" id="username" placeholder="Username" autocomplete="off" autofocus>
-        <h4 class="error">{{ error2 }}</h4>
-        <input type="password" name="password" id="password" placeholder="Password">
-        <button type="submit" name="submit" id="submit">Log In</button>
-        <p>If you don't have an account, <a href="/register">Register</a></p>
-      </form>
-    </div>
+<div class="container-big">
+  <h1>Welcome to the workout planner</h1>
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='1.jpg') }}" alt="Man lifting a barbell">
+    <form action="/login" method="post" class="card-container">
+      <h2>Greetings, log in if you have an account</h2>
+      <h4 class="error">{{ error1 }}</h4>
+      <input type="text" name="username" id="username" placeholder="Username" autocomplete="off" autofocus>
+      <h4 class="error">{{ error2 }}</h4>
+      <input type="password" name="password" id="password" placeholder="Password">
+      <button type="submit" name="submit" id="submit">Log In</button>
+      <p>If you don't have an account, <a href="/register">Register</a></p>
+    </form>
   </div>
+</div>
 {% endblock %}

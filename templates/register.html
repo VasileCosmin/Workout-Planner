@@ -3,22 +3,22 @@
 {% block title %} Register {% endblock %}
 
 {% block body %}
-  <div class="container">
-    <h1>Welcome to the workout planner</h1>
-  
-    <div class="card">
-      <img src="{{ url_for('static', filename='1.jpg') }}" alt="Man lifting a barbell">
-      <form action="/register" method="post" class="card-container">
-        <h2>Register if you don't have an account</h2>
-        <h4 class="error">{{ error }}</h4>
-        <input type="text" name="username" id="username" placeholder="Username" autocomplete="off" autofocus>
-        <h4 class="error">{{ error_pass }}</h4>
-        <input type="password" name="password" id="password" placeholder="Password">
-        <h4 class="error">{{ error_conf }}</h4>
-        <input type="password" name="confirmation" id="confirmation" placeholder="Confirm password">
-        <button type="submit" name="submit" id="submit">Register</button>
-        <p>If you already have an account, <a href="/login">Log In</a></p>
-      </form>
-    </div>
+<div class="container-big">
+  <h1>Welcome to the workout planner</h1>
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='1.jpg') }}" alt="Man lifting a barbell">
+    <form action="/register" method="post" class="card-container">
+      <h2>Register if you don't have an account</h2>
+      <h4 class="error">{{ error }}</h4>
+      <input type="text" name="username" id="username" placeholder="Username" autocomplete="off" autofocus>
+      <h4 class="error">{{ error_pass }}</h4>
+      <input type="password" name="password" id="password" placeholder="Password">
+      <h4 class="error">{{ error_conf }}</h4>
+      <input type="password" name="confirmation" id="confirmation" placeholder="Confirm password">
+      <button type="submit" name="submit" id="submit">Register</button>
+      <p>If you already have an account, <a href="/login">Log In</a></p>
+    </form>
   </div>
+</div>
 {% endblock %}
