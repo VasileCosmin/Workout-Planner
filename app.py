@@ -50,6 +50,8 @@ def delete():
             user_id,
         )
 
+    flash("Exercise Removed!")
+
     return redirect("/workout")
 
 
