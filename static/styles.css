@@ -391,7 +391,7 @@ h3 {
   list-style-type: none;
   height: 100vh;
   background-color: var(--black);
-  z-index: 5;
+  z-index: 90;
 }
 
 .mobile-menu .nav-item {
@@ -409,7 +409,7 @@ h3 {
   cursor: pointer;
   background-color: var(--black);
   padding: 5px 10px;
-  z-index: 10;
+  z-index: 100;
 }
 
 #mobile-menu-open:hover {
