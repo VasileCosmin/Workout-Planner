@@ -6,3 +6,15 @@
 #### Screenshots:
 
 ![Login Page](/screenshots/1.png)
+![Register Page](/screenshots/2.png)
+![Home Page](/screenshots/3.png)
+![Why you should workout Page](/screenshots/4.png)
+![[Why you should workout Page](/screenshots/5.png)
+![Exercises Page](/screenshots/6.png)
+![Selected muscle exercises Page](/screenshots/7.png)
+![My wourkout Page](/screenshots/8.png)
+![Mobile login Page](/screenshots/9.png)
+![Mobile home Page](/screenshots/10.png)
+![Mobile menu Page](/screenshots/11.png)
+![Mobile exercises Page](/screenshots/12.png)
+![MObile my workout Page](/screenshots/13.png)
